@@ -60,6 +60,7 @@ class _ProductsListState extends State<ProductsList> {
                       category: theProduct.category,
                       price: theProduct.price,
                       discount: theProduct.discountPercentage,
+                      reviews: theProduct.reviews,
                     ),
                   ),
                 ),

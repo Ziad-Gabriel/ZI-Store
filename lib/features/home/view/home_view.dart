@@ -16,7 +16,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: mainAppBar(context),
       drawer: MainDrawer(),
-      body: Center(child: ProductsList()),
+      body: ProductsList(),
     );
   }
 }
