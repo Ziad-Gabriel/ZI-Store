@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zi_store/core/models/product_model.dart';
-import 'package:zi_store/core/widgets/app_bar.dart';
+import 'package:zi_store/models/product_model.dart';
+import 'package:zi_store/features/shared/app_bar.dart';
 import 'package:zi_store/features/product/widgets/content/product_name.dart';
 import 'package:zi_store/features/product/widgets/content/product_price.dart';
 import 'package:zi_store/features/product/widgets/content/product_review.dart';
@@ -9,25 +9,16 @@ import 'package:zi_store/features/product/widgets/images/product_image_selector.
 import 'package:zi_store/features/product/widgets/images/product_images.dart';
 
 class ProductView extends StatefulWidget {
-  final int id;
-  final List<String> images;
-  final String title;
-  final String description;
-  final String category;
-  final double price;
-  final double discount;
-  final List<Review> reviews;
-  const ProductView({
-    super.key,
-    required this.id,
-    required this.images,
-    required this.title,
-    required this.description,
-    required this.category,
-    required this.price,
-    required this.discount,
-    required this.reviews,
-  });
+  // final int id;
+  // final List<String> images;
+  // final String title;
+  // final String description;
+  // final String category;
+  // final double price;
+  // final double discount;
+  // final List<Review> reviews;
+  final ProductModel _product;
+  const ProductView({super.key, required this._product});
 
   @override
   State<ProductView> createState() => _ProductViewState();
@@ -57,8 +48,8 @@ class _ProductViewState extends State<ProductView> {
       body: ListView(
         children: [
           ProductImages(
-            images: widget.images,
-            id: widget.id,
+            images: widget._product.images,
+            id: widget._product.id,
             onChange: (newIndex) {
               setState(() => imageIndex = newIndex);
             },
@@ -69,7 +60,7 @@ class _ProductViewState extends State<ProductView> {
             height: MediaQuery.of(context).size.height * 0.1,
             width: double.infinity,
             child: ProductImageSelector(
-              images: widget.images,
+              images: widget._product.images,
               imageIndex: imageIndex,
               onTap: (newIndex) {
                 setState(() => imageIndex = newIndex);
@@ -87,19 +78,23 @@ class _ProductViewState extends State<ProductView> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ProductName(name: widget.title),
-                ProductPrice(price: widget.price, discount: widget.discount),
+                ProductName(name: widget._product.title),
+                ProductPrice(
+                  price: widget._product.price,
+                  discount: widget._product.discountPercentage,
+                ),
                 gab,
                 Text(
-                  widget.description,
+                  widget._product.description,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
-                ProductReview(reviews: widget.reviews),
+                ProductReview(reviews: widget._product.reviews),
               ],
             ),
           ),
         ],
       ),
+      extendBody: true,
       bottomNavigationBar: BuyButton(),
     );
   }

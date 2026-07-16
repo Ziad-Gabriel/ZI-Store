@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:zi_store/core/models/product_model.dart';
-import 'package:zi_store/core/services/product_service.dart';
+import 'package:zi_store/models/product_model.dart';
+import 'package:zi_store/services/product_service.dart';
 
 class ProductController {
   Future<List<ProductModel>> getProduct() async {

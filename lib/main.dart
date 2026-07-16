@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:zi_store/providers/theme_provider.dart';
 
-import 'package:zi_store/core/themes/dark_theme.dart';
-import 'package:zi_store/core/themes/light_theme.dart';
+import 'package:zi_store/themes/dark_theme.dart';
+import 'package:zi_store/themes/light_theme.dart';
 import 'package:zi_store/features/splash_screen/splash_screen.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ThemeProvider(),
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
@@ -15,7 +22,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.system,
+      themeMode: Provider.of<ThemeProvider>(context).getThemeMode,
       theme: LightTheme.lightTheme,
       darkTheme: DarkTheme.darkTheme,
       home: const SplashScreen(),

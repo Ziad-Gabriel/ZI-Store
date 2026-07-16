@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:zi_store/providers/theme_provider.dart';
 
 class ChooseTheme extends StatefulWidget {
+  
   const ChooseTheme({super.key});
 
   @override
@@ -8,9 +11,10 @@ class ChooseTheme extends StatefulWidget {
 }
 
 class _ChooseThemeState extends State<ChooseTheme> {
-  int _isSelected = 0;
+   
   @override
   Widget build(BuildContext context) {
+    int selectedIndex=context.watch<ThemeProvider>().getThemeIndex;
     return Column(
       children: [
         Text('App Theme', style: Theme.of(context).textTheme.bodyLarge),
@@ -23,11 +27,12 @@ class _ChooseThemeState extends State<ChooseTheme> {
                   'Light Theme',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                value: _isSelected == 1,
+                value: selectedIndex == 0,
                 onChanged: (_) {
                   setState(() {
-                    _isSelected = 1;
+                    selectedIndex = 0;
                   });
+                  context.read<ThemeProvider>().setThemeMode(0);
                 },
               ),
               CheckboxListTile(
@@ -35,11 +40,12 @@ class _ChooseThemeState extends State<ChooseTheme> {
                   'Dark Theme',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                value: _isSelected == 2,
+                value: selectedIndex==1,
                 onChanged: (_) {
                   setState(() {
-                    _isSelected = 2;
+                    selectedIndex = 1;
                   });
+                 context.read<ThemeProvider>().setThemeMode(1);
                 },
               ),
               CheckboxListTile(
@@ -47,11 +53,12 @@ class _ChooseThemeState extends State<ChooseTheme> {
                   'Device Theme',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                value: _isSelected == 0,
+                value: selectedIndex == 2,
                 onChanged: (_) {
                   setState(() {
-                    _isSelected = 0;
+                    selectedIndex = 2;
                   });
+                  context.read<ThemeProvider>().setThemeMode(2);
                 },
               ),
             ],

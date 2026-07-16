@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zi_store/core/models/product_model.dart';
+import 'package:zi_store/models/product_model.dart';
 
 class ProductReview extends StatelessWidget {
   final List<Review> reviews;
@@ -10,10 +10,8 @@ class ProductReview extends StatelessWidget {
     return Column(
       children: [
         Text('Reviews', style: Theme.of(context).textTheme.bodyLarge),
-        ListView.builder(
-          shrinkWrap: true,
-          itemCount: reviews.length,
-          itemBuilder: (context, index) {
+        Column(
+          children: List.generate(reviews.length, (index) {
             final Review theReview = reviews[index];
             return Card(
               elevation: 2,
@@ -42,15 +40,15 @@ class ProductReview extends StatelessWidget {
                     ),
                     Row(
                       children: [
-                        Icon(Icons.star, color: Colors.amber),
                         Text('${theReview.rating}'),
+                        Icon(Icons.star, color: Colors.amber),
                       ],
                     ),
                   ],
                 ),
               ),
             );
-          },
+          }),
         ),
       ],
     );
