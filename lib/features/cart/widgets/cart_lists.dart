@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:zi_store/features/shared/main_product_lists/the_lists/grid.dart';
 import 'package:zi_store/features/shared/main_product_lists/the_lists/list.dart';
+import 'package:zi_store/providers/cart_provider.dart';
 import 'package:zi_store/repository/product_repository.dart';
 
-class ProductsList extends StatefulWidget {
+class CartLists extends StatefulWidget {
   final bool isGrid;
-  const ProductsList({super.key, required this.isGrid});
+  const CartLists({super.key, required this.isGrid});
 
   @override
-  State<ProductsList> createState() => _ProductsListState();
+  State<CartLists> createState() => _CartListsState();
 }
 
-class _ProductsListState extends State<ProductsList> {
+class _CartListsState extends State<CartLists> {
   @override
   Widget build(BuildContext context) {
+    final cartList = context.watch<CartProvider>().getProductInCart;
     return FutureBuilder(
       future: ProductRepository().getProduct(),
       builder: (context, snapshot) {
@@ -28,7 +31,7 @@ class _ProductsListState extends State<ProductsList> {
             ),
           );
         }
-        if (!snapshot.hasData || snapshot.data!.isEmpty) {
+        if (cartList.isEmpty) {
           return Center(
             child: Text(
               'No products',
@@ -36,14 +39,13 @@ class _ProductsListState extends State<ProductsList> {
             ),
           );
         }
-        final products = snapshot.data!;
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Column(
             children: [
               widget.isGrid
-                  ? Expanded(child: GridProduct(products: products))
-                  : Expanded(child: ListProduct(products: products)),
+                  ? Expanded(child: GridProduct(products: cartList))
+                  : Expanded(child: ListProduct(products: cartList)),
             ],
           ),
         );

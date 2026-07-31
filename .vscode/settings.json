@@ -3,5 +3,6 @@
         "fugaz",
         "roboto"
     ],
-    "java.compile.nullAnalysis.mode": "disabled"
+    "java.compile.nullAnalysis.mode": "disabled",
+    "cmake.ignoreCMakeListsMissing": true
 }

@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:zi_store/features/shared/nav_bar/nav_buttons.dart';
 
 class CustomNavBar extends StatefulWidget {
-  const CustomNavBar({super.key});
+
+  final int currentIndex;
+  final Function(int) onTap;
+  const CustomNavBar({super.key,required this.currentIndex,required this.onTap});
 
   @override
   State<CustomNavBar> createState() => _CustomNavBarState();
 }
 
 class _CustomNavBarState extends State<CustomNavBar> {
-  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,10 +21,8 @@ class _CustomNavBarState extends State<CustomNavBar> {
         child: SizedBox(
           height: 70,
           child: NavButtons(
-            currentIndex: currentIndex,
-            onTap: (index) => setState(() {
-              currentIndex = index;
-            }),
+            currentIndex: widget.currentIndex,
+            onTap: (index) => widget.onTap(index),
           ),
         ),
       ),

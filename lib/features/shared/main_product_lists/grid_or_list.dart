@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class GridList extends StatelessWidget {
+class GridOrList extends StatelessWidget {
   final bool isGrid;
   final Function(bool) onTap;
-  const GridList({super.key, required this.isGrid, required this.onTap});
+  const GridOrList({super.key, required this.isGrid, required this.onTap});
 
   @override
   Widget build(BuildContext context) {

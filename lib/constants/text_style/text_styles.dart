@@ -9,22 +9,22 @@ class TextStyles {
     titleLarge: titleStyle.copyWith(
       fontSize: 28,
       fontWeight: FontWeight.w800,
-      letterSpacing: 2,
+      letterSpacing: 1.7,
     ),
     bodyLarge: bodyStyle.copyWith(
       fontSize: 16,
       fontWeight: FontWeight.w700,
-      letterSpacing: 1.5,
+      letterSpacing: 1.2,
     ),
     bodyMedium: bodyStyle.copyWith(
       fontSize: 12,
       fontWeight: FontWeight.w500,
-      letterSpacing: 1.5,
+      letterSpacing: 1.2,
     ),
     bodySmall: bodyStyle.copyWith(
       fontSize: 10,
       fontWeight: FontWeight.w500,
-      letterSpacing: 1.5,
+      letterSpacing: 1.2,
     ),
   );
 }

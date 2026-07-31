@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zi_store/features/home/widgets/products/product_container/list_product_container.dart';
+import 'package:zi_store/features/shared/main_product_lists/product_container/list_product_container.dart';
 import 'package:zi_store/features/product/view/product_view.dart';
 import 'package:zi_store/models/product_model.dart';
 

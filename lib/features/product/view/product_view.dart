@@ -9,14 +9,6 @@ import 'package:zi_store/features/product/widgets/images/product_image_selector.
 import 'package:zi_store/features/product/widgets/images/product_images.dart';
 
 class ProductView extends StatefulWidget {
-  // final int id;
-  // final List<String> images;
-  // final String title;
-  // final String description;
-  // final String category;
-  // final double price;
-  // final double discount;
-  // final List<Review> reviews;
   final ProductModel _product;
   const ProductView({super.key, required this._product});
 
@@ -79,9 +71,10 @@ class _ProductViewState extends State<ProductView> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ProductName(name: widget._product.title),
-                ProductPrice(
+                ProductPriceAndRate(
                   price: widget._product.price,
                   discount: widget._product.discountPercentage,
+                  rate: widget._product.rating,
                 ),
                 gab,
                 Text(
@@ -95,7 +88,7 @@ class _ProductViewState extends State<ProductView> {
         ],
       ),
       extendBody: true,
-      bottomNavigationBar: BuyButton(),
+      bottomNavigationBar: BuyButton(product: widget._product),
     );
   }
 }

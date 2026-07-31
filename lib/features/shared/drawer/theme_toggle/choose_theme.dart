@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:zi_store/providers/theme_provider.dart';
 
 class ChooseTheme extends StatefulWidget {
-  
   const ChooseTheme({super.key});
 
   @override
@@ -11,11 +10,11 @@ class ChooseTheme extends StatefulWidget {
 }
 
 class _ChooseThemeState extends State<ChooseTheme> {
-   
   @override
   Widget build(BuildContext context) {
-    int selectedIndex=context.watch<ThemeProvider>().getThemeIndex;
+    int selectedIndex = context.watch<ThemeProvider>().getThemeIndex;
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('App Theme', style: Theme.of(context).textTheme.bodyLarge),
         Card(
@@ -40,12 +39,12 @@ class _ChooseThemeState extends State<ChooseTheme> {
                   'Dark Theme',
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
-                value: selectedIndex==1,
+                value: selectedIndex == 1,
                 onChanged: (_) {
                   setState(() {
                     selectedIndex = 1;
                   });
-                 context.read<ThemeProvider>().setThemeMode(1);
+                  context.read<ThemeProvider>().setThemeMode(1);
                 },
               ),
               CheckboxListTile(

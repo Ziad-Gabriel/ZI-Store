@@ -10,7 +10,7 @@ class ProductImages extends StatefulWidget {
     required this.images,
     required this.id,
     required this.onChange,
-    required this.controller
+    required this.controller,
   });
 
   @override
@@ -18,27 +18,35 @@ class ProductImages extends StatefulWidget {
 }
 
 class _ProductImagesState extends State<ProductImages> {
-
-  
-
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      color: Theme.of(context).colorScheme.primaryContainer,
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.2,
-        width: double.infinity,
-        child: PageView.builder(
-          itemCount: widget.images.length,
-          controller: widget.controller,
-          onPageChanged: (value) {
-            widget.onChange(value);
-          },
-          itemBuilder: (context, index) {
-            return Hero(
-              tag: '${widget.id}',
-              child: Image.network(
+    return Hero(
+      tag: '${widget.id}',
+      child: Card(
+        elevation: 2,
+        color: Theme.of(context).colorScheme.primaryContainer,
+        child: Container(
+          height: MediaQuery.of(context).size.height * 0.2,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Theme.of(context).colorScheme.onPrimaryContainer,
+                Theme.of(context).colorScheme.surface,
+              ],
+              begin: AlignmentGeometry.bottomCenter,
+              end: AlignmentGeometry.center,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: PageView.builder(
+            itemCount: widget.images.length,
+            controller: widget.controller,
+            onPageChanged: (value) {
+              widget.onChange(value);
+            },
+            itemBuilder: (context, index) {
+              return Image.network(
                 widget.images[index],
                 fit: BoxFit.fitHeight,
                 loadingBuilder: (context, child, loadingProgress) =>
@@ -62,9 +70,9 @@ class _ProductImagesState extends State<ProductImages> {
                     ).colorScheme.onPrimary.withAlpha(175),
                   ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

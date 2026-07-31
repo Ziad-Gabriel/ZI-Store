@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zi_store/providers/cart_provider.dart';
+import 'package:zi_store/providers/fav_provider.dart';
 import 'package:zi_store/providers/theme_provider.dart';
 
 import 'package:zi_store/themes/dark_theme.dart';
@@ -8,8 +10,12 @@ import 'package:zi_store/features/splash_screen/splash_screen.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => ThemeProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => FavProvider()),
+        ChangeNotifierProvider(create: (context) => CartProvider()),
+      ],
       child: const MainApp(),
     ),
   );

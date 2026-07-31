@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:zi_store/models/product_model.dart';
 import 'package:zi_store/services/product_service.dart';
 
-class ProductController {
+class ProductRepository {
   Future<List<ProductModel>> getProduct() async {
     List<ProductModel> productsList = [];
     final response = await ProductService().getProduct();
