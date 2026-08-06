@@ -14,7 +14,7 @@
 
 * **Dynamic Product Catalog:** Browse a wide variety of clothing items fetched seamlessly from public API endpoints.
 * **Custom Navigation:** Implements an intuitive, custom-designed curved navigation bar for a fluid user experience.
-* **State Management:** Efficient and predictable UI state updates throughout the user journey.
+* **State Management:** Efficient and predictable UI state updates throughout the user journey with Provider.
 * **Detailed Product Views:** View comprehensive product details, sizing options, descriptions, and pricing.
 * **Shopping Cart & Checkout Flow:** Easily manage items in the cart, adjust quantities, and proceed through a streamlined checkout experience.
 * **Responsive Layout:** Optimized to look and feel exceptional across various mobile screen dimensions.
