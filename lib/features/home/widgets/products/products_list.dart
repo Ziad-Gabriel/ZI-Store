@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zi_store/features/shared/main_product_lists/the_lists/grid.dart';
 import 'package:zi_store/features/shared/main_product_lists/the_lists/list.dart';
-import 'package:zi_store/repository/product_repository.dart';
+import 'package:zi_store/core/repository/product_repository.dart';
 
 class ProductsList extends StatefulWidget {
   final bool isGrid;

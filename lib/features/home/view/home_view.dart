@@ -20,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Products', style: Theme.of(context).textTheme.bodyLarge),
+              Text('Products', style: Theme.of(context).textTheme.titleSmall),
               GridOrList(
                 isGrid: _isGrid,
                 onTap: (isGrid) => setState(() {

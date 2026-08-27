@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zi_store/features/auth/sign_in/widgets/nav_to_login.dart';
 import 'package:zi_store/features/auth/sign_in/widgets/sign_in_buttons.dart';
 import 'package:zi_store/features/auth/sign_in/widgets/sign_in_text_fields.dart';
+import 'package:zi_store/features/shared/fast_auth/google_auth.dart';
+import 'package:zi_store/features/shared/fast_auth/ios_auth.dart';
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -22,20 +25,6 @@ class _SignInViewState extends State<SignInView> {
     confirmPasswordController,
   ];
 
-  final List<String> titles = [
-    'E-mail',
-    'Username',
-    'Password',
-    'Confirm Password',
-  ];
-
-  final List<TextInputType> keyboardTypes = [
-    TextInputType.emailAddress,
-    TextInputType.name,
-    TextInputType.name,
-    TextInputType.name,
-  ];
-
   @override
   void dispose() {
     emailController.dispose();
@@ -49,56 +38,96 @@ class _SignInViewState extends State<SignInView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-      body: Column(
-        children: [
-          Hero(
-            tag: 'zi store',
-            curve: Curves.easeInOutBack,
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.35,
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.surface,
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(50),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    offset: Offset(0, 0),
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.onPrimary.withAlpha(50),
-                    blurRadius: 10,
-                  ),
-                ],
-              ),
-              child: Center(
-                child: Center(
-                  child: Text(
-                    'ZI Store',
-                    style: Theme.of(
-                      context,
-                    ).textTheme.titleLarge!.copyWith(fontSize: 34),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: ListView(
+      body: SafeArea(
+        child: Column(
+          spacing: 20,
+          children: [
+            SizedBox(height: MediaQuery.of(context).size.height * 0.035),
+            Row(
+              spacing: 12,
               children: [
-                SignInTextFields(
-                  controllers: controllers,
-                  titles: titles,
-                  maxLines: 1,
-                  keyboardTypes: keyboardTypes,
+                Hero(
+                  tag: 'zi store',
+                  curve: Curves.easeInOutBack,
+                  child: Card(
+                    elevation: 2,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        'assets/logo/logo.png',
+                        width: 95,
+                        height: 95,
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    'Welcome,\nPlease Sign In.',
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
                 ),
               ],
             ),
-          ),
-          SignInButtons(),
-          SizedBox(height: 50),
-        ],
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.all(8),
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 12),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Theme.of(context).colorScheme.shadow,
+                          offset: Offset(0, 1),
+                          blurRadius: 20,
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      spacing: 12,
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(child: GoogleAuth()),
+                            Expanded(child: IosAuth()),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Divider(
+                                color: Theme.of(context).colorScheme.shadow,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Text(
+                                'Or Sign In with',
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                            ),
+                            Expanded(
+                              child: Divider(
+                                color: Theme.of(context).colorScheme.shadow,
+                              ),
+                            ),
+                          ],
+                        ),
+                        SignInTextFields(controllers: controllers),
+                        SignInButtons(),
+                      ],
+                    ),
+                  ),
+                  NavToLogin(),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

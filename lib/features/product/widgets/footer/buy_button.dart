@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zi_store/models/product_model.dart';
-import 'package:zi_store/providers/cart_provider.dart';
-import 'package:zi_store/providers/fav_provider.dart';
+import 'package:zi_store/core/models/product_model.dart';
+import 'package:zi_store/core/providers/cart_provider.dart';
+import 'package:zi_store/core/providers/fav_provider.dart';
 
 class BuyButton extends StatefulWidget {
   final ProductModel product;
@@ -20,6 +20,29 @@ class _BuyButtonState extends State<BuyButton> {
       padding: const EdgeInsets.all(24.0),
       child: Row(
         children: [
+          Card(
+            elevation: 4,
+            color: Theme.of(context).colorScheme.secondary,
+            child: SizedBox(
+              height: 50,
+              width: 50,
+              child: IconButton(
+                onPressed: () => context.read<FavProvider>().addToFav(
+                  widget.product,
+                  context,
+                ),
+                icon: Icon(
+                  !isFav
+                      ? Icons.favorite_border_rounded
+                      : Icons.favorite_rounded,
+                  size: 26,
+                  color: !isFav
+                      ? Theme.of(context).colorScheme.onSurface
+                      : Theme.of(context).colorScheme.error,
+                ),
+              ),
+            ),
+          ),
           Expanded(
             child: GestureDetector(
               onTap: () {
@@ -44,26 +67,6 @@ class _BuyButtonState extends State<BuyButton> {
                       ],
                     ),
                   ),
-                ),
-              ),
-            ),
-          ),
-          Card(
-            elevation: 4,
-            color: Theme.of(context).colorScheme.primaryContainer,
-            child: SizedBox(
-              height: 50,
-              width: 50,
-              child: IconButton(
-                onPressed: () => context.read<FavProvider>().addToFav(
-                  widget.product,
-                  context,
-                ),
-                icon: Icon(
-                  !isFav
-                      ? Icons.favorite_border_rounded
-                      : Icons.favorite_rounded,
-                  size: 26,
                 ),
               ),
             ),

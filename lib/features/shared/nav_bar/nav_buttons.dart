@@ -15,10 +15,10 @@ class NavButtons extends StatefulWidget {
 
 class _NavButtonsState extends State<NavButtons> {
   final List<IconData> icons = [
-    Icons.home_rounded,
-    Icons.favorite,
-    Icons.shopping_basket_rounded,
-    Icons.settings,
+    Icons.home_outlined,
+    Icons.favorite_outline,
+    Icons.shopping_basket_outlined,
+    Icons.settings_outlined,
   ];
   @override
   Widget build(BuildContext context) {
@@ -30,27 +30,27 @@ class _NavButtonsState extends State<NavButtons> {
         (index) => InkWell(
           onTap: () => widget.onTap(index),
           child: AnimatedContainer(
-            height: widget.currentIndex == index ? 60 : 50,
-            width: widget.currentIndex == index ? 75 : 50,
+            height: widget.currentIndex == index ? 50 : 45,
+            width: widget.currentIndex == index ? 50 : 45,
             duration: Duration(milliseconds: 250),
             decoration: BoxDecoration(
-              gradient: RadialGradient(
-                colors: widget.currentIndex == index
-                    ? [
-                        Theme.of(context).colorScheme.primary,
-                        Theme.of(context).colorScheme.primary.withAlpha(235),
-                      ]
-                    : [
-                        Theme.of(context).colorScheme.surface,
-                        Theme.of(context).colorScheme.surfaceContainer,
-                      ],
-                radius: 1.5,
+              color: widget.currentIndex == index
+                  ? Theme.of(context).colorScheme.primary.withAlpha(120)
+                  : Theme.of(context).colorScheme.surface,
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: widget.currentIndex == index
+                    ? Theme.of(context).colorScheme.primary
+                    : Theme.of(context).colorScheme.surface,
+                width: 1.5,
               ),
-              borderRadius: BorderRadius.circular(50),
             ),
             child: Icon(
               icons[index],
               size: widget.currentIndex == index ? 28 : 24,
+              color: widget.currentIndex == index
+                  ? Theme.of(context).colorScheme.primary.withValues()
+                  : Theme.of(context).colorScheme.onSurface,
             ),
           ),
         ),

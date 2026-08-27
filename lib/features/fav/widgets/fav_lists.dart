@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zi_store/features/shared/main_product_lists/the_lists/grid.dart';
 import 'package:zi_store/features/shared/main_product_lists/the_lists/list.dart';
-import 'package:zi_store/providers/fav_provider.dart';
-import 'package:zi_store/repository/product_repository.dart';
+import 'package:zi_store/core/providers/fav_provider.dart';
+import 'package:zi_store/core/repository/product_repository.dart';
 
 class FavLists extends StatefulWidget {
   final bool isGrid;

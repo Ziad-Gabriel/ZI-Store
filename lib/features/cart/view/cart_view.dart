@@ -21,7 +21,7 @@ class _CartViewState extends State<CartView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Cart', style: Theme.of(context).textTheme.bodyLarge),
+              Text('Cart', style: Theme.of(context).textTheme.titleSmall),
               GridOrList(
                 isGrid: _isGrid,
                 onTap: (isGrid) => setState(() {

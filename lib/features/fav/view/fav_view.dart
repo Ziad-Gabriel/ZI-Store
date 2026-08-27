@@ -20,7 +20,7 @@ class _FavViewState extends State<FavView> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Favorites', style: Theme.of(context).textTheme.bodyLarge),
+              Text('Favorites', style: Theme.of(context).textTheme.titleSmall),
               GridOrList(
                 isGrid: _isGrid,
                 onTap: (isGrid) => setState(() {

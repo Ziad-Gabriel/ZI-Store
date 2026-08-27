@@ -27,14 +27,14 @@ class _ProductImageSelectorState extends State<ProductImageSelector> {
           duration: Duration(milliseconds: 250),
           decoration: BoxDecoration(
             color: widget.imageIndex == index
-                ? Theme.of(context).colorScheme.primary.withAlpha(100)
+                ? Theme.of(context).colorScheme.primary.withAlpha(60)
                 : Theme.of(context).colorScheme.primaryContainer.withAlpha(100),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: widget.imageIndex == index
                   ? Theme.of(context).colorScheme.primary
                   : Theme.of(context).colorScheme.primaryContainer,
-              width: 2,
+              width: 1.5,
             ),
           ),
           margin: EdgeInsets.symmetric(horizontal: 4),

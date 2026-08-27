@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zi_store/features/shared/main_product_lists/product_container/product_image.dart';
-import 'package:zi_store/models/product_model.dart';
-import 'package:zi_store/providers/fav_provider.dart';
+import 'package:zi_store/core/models/product_model.dart';
+import 'package:zi_store/core/providers/fav_provider.dart';
 
 class ListProductContainer extends StatelessWidget {
   final ProductModel _product;
@@ -41,7 +41,11 @@ class ListProductContainer extends StatelessWidget {
                     children: [
                       Text(
                         '${_product.price} \$',
-                        style: Theme.of(context).textTheme.bodyMedium,
+                        style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withAlpha(100),
+                        ),
                       ),
                       Card(
                         elevation: 2,

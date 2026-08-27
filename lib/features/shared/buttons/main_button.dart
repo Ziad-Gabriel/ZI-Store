@@ -23,7 +23,12 @@ class MainButton extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 10),
-        child: Text(title, style: Theme.of(context).textTheme.bodyLarge),
+        child: Text(
+          title,
+          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            color: Theme.of(context).colorScheme.onPrimary,
+          ),
+        ),
       ),
     );
   }

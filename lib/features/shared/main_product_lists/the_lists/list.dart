@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zi_store/features/shared/main_product_lists/product_container/list_product_container.dart';
 import 'package:zi_store/features/product/view/product_view.dart';
-import 'package:zi_store/models/product_model.dart';
+import 'package:zi_store/core/models/product_model.dart';
 
 class ListProduct extends StatelessWidget {
   final List<ProductModel> products;

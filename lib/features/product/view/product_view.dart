@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:zi_store/models/product_model.dart';
-import 'package:zi_store/features/shared/app_bar.dart';
+import 'package:zi_store/core/models/product_model.dart';
 import 'package:zi_store/features/product/widgets/content/product_name.dart';
 import 'package:zi_store/features/product/widgets/content/product_price.dart';
 import 'package:zi_store/features/product/widgets/content/product_review.dart';
 import 'package:zi_store/features/product/widgets/footer/buy_button.dart';
 import 'package:zi_store/features/product/widgets/images/product_image_selector.dart';
 import 'package:zi_store/features/product/widgets/images/product_images.dart';
+import 'package:zi_store/features/shared/app_bar/product_app_bar.dart';
 
 class ProductView extends StatefulWidget {
   final ProductModel _product;
@@ -36,7 +36,7 @@ class _ProductViewState extends State<ProductView> {
   Widget build(BuildContext context) {
     final Widget gab = SizedBox(height: 12);
     return Scaffold(
-      appBar: mainAppBar(context),
+      appBar: productAppBar(context),
       body: ListView(
         children: [
           ProductImages(
@@ -47,7 +47,7 @@ class _ProductViewState extends State<ProductView> {
             },
             controller: _pageController,
           ),
-
+          gab,
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.1,
             width: double.infinity,
@@ -77,9 +77,11 @@ class _ProductViewState extends State<ProductView> {
                   rate: widget._product.rating,
                 ),
                 gab,
-                Text(
-                  widget._product.description,
-                  style: Theme.of(context).textTheme.bodySmall,
+                SizedBox(
+                  child: Text(
+                    widget._product.description,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
                 ),
                 ProductReview(reviews: widget._product.reviews),
               ],

@@ -3,19 +3,19 @@ import 'package:zi_store/features/shared/text_fields/custom_text_field.dart';
 
 class LogInTextFieldList extends StatelessWidget {
   final List<TextEditingController> controllers;
-  final int maxLines;
-  final List<String> titles;
-  final List<TextInputType> keyboardTypes;
-  const LogInTextFieldList({
-    super.key,
-    required this.controllers,
-    required this.maxLines,
-    required this.titles,
-    required this.keyboardTypes,
-  });
+
+  const LogInTextFieldList({super.key, required this.controllers});
 
   @override
   Widget build(BuildContext context) {
+    final List<String> titles = ['E-mail', 'Password'];
+
+    final List<TextInputType> keyboardTypes = [
+      TextInputType.emailAddress,
+      TextInputType.name,
+    ];
+
+    final iconList = [Icons.mail_outlined, Icons.lock_outline_rounded];
     return Column(
       children: List.generate(
         2,
@@ -23,9 +23,10 @@ class LogInTextFieldList extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6),
           child: CustomTextField(
             controller: controllers[index],
-            maxLines: maxLines,
+            maxLines: 1,
             title: titles[index],
             keyboardType: keyboardTypes[index],
+            icon: iconList[index],
           ),
         ),
       ),

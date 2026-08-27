@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:zi_store/providers/cart_provider.dart';
-import 'package:zi_store/providers/fav_provider.dart';
-import 'package:zi_store/providers/theme_provider.dart';
+import 'package:zi_store/core/providers/cart_provider.dart';
+import 'package:zi_store/core/providers/fav_provider.dart';
+import 'package:zi_store/core/providers/theme_provider.dart';
 
-import 'package:zi_store/themes/dark_theme.dart';
-import 'package:zi_store/themes/light_theme.dart';
-import 'package:zi_store/features/splash_screen/splash_screen.dart';
+import 'package:zi_store/core/themes/themes.dart';
+// import 'package:zi_store/features/splash_screen/splash_screen.dart';
+import 'package:zi_store/main_view.dart';
 
 void main() {
   runApp(
@@ -29,9 +29,9 @@ class MainApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: Provider.of<ThemeProvider>(context).getThemeMode,
-      theme: LightTheme.lightTheme,
-      darkTheme: DarkTheme.darkTheme,
-      home: const SplashScreen(),
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      home: const MainView(),
     );
   }
 }

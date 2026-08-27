@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zi_store/models/product_model.dart';
+import 'package:zi_store/core/models/product_model.dart';
 
 class ProductReview extends StatelessWidget {
   final List<Review> reviews;
@@ -24,14 +24,6 @@ class ProductReview extends StatelessWidget {
                     Text(
                       theReview.reviewerName,
                       style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    Text(
-                      theReview.reviewerEmail,
-                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: Theme.of(
-                          context,
-                        ).colorScheme.onPrimary.withAlpha(150),
-                      ),
                     ),
                     SizedBox(height: 5),
                     Text(

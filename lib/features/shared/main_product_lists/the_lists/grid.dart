@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zi_store/features/shared/main_product_lists/product_container/grid_product_container.dart';
 import 'package:zi_store/features/product/view/product_view.dart';
-import 'package:zi_store/models/product_model.dart';
+import 'package:zi_store/core/models/product_model.dart';
 
 class GridProduct extends StatelessWidget {
   final List<ProductModel> products;
@@ -13,7 +13,7 @@ class GridProduct extends StatelessWidget {
       itemCount: products.length,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 0.8,
+        childAspectRatio: 0.76,
         mainAxisSpacing: 10.0,
         crossAxisSpacing: 8.0,
       ),

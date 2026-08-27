@@ -3,8 +3,7 @@ import 'package:zi_store/features/cart/view/cart_view.dart';
 import 'package:zi_store/features/fav/view/fav_view.dart';
 import 'package:zi_store/features/home/view/home_view.dart';
 import 'package:zi_store/features/settings/view/settings_view.dart';
-import 'package:zi_store/features/shared/app_bar.dart';
-import 'package:zi_store/features/shared/drawer/drawer.dart';
+import 'package:zi_store/features/shared/app_bar/main_app_bar.dart';
 import 'package:zi_store/features/shared/nav_bar/nav_bar.dart';
 
 class MainView extends StatefulWidget {
@@ -27,7 +26,6 @@ class _MainViewState extends State<MainView> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       appBar: mainAppBar(context),
-      drawer: MainDrawer(),
       body: Container(
         height: MediaQuery.of(context).size.height - 180,
         decoration: BoxDecoration(
