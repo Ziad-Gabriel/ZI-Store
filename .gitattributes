@@ -1,0 +1,11 @@
+web/** linguist-vendored
+windows/** linguist-vendored
+linux/** linguist-vendored
+macos/** linguist-vendored
+android/** linguist-vendored
+ios/** linguist-vendored
+
+**/CMakeLists.txt linguist-vendored
+**/*.cmake linguist-vendored
+
+*.dart linguist-detectable=true
